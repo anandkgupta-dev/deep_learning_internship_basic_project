@@ -1,5 +1,8 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "installCommand": "echo 'Static build - skipping pip install'",
+  "buildCommand": "echo 'Static build ready'",
+  "outputDirectory": "."
 }

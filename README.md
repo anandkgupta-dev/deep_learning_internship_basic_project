@@ -158,10 +158,12 @@ All metrics are saved in `models/evaluation_results.json`.
 ```
 weather-condition-classification/
 │
-├── app.py                      # Interactive Streamlit Web Application
+├── streamlit_app.py            # Interactive Streamlit Web Application
 ├── train_model.py              # End-to-end model training, evaluation & artifact saving
 ├── generate_data.py            # Reproducible synthetic dataset generator
 ├── test_model.py               # Automated inference verification test script
+├── index.html                  # Standalone client-side predictor for Vercel deployment
+├── vercel.json                 # Vercel configuration
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # Complete documentation & viva reference
 │
@@ -185,39 +187,39 @@ weather-condition-classification/
 cd "$HOME\Desktop\weather-condition-classification"
 ```
 
-### Step 2: (Optional) Create and activate a Virtual Environment
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-```
-
-### Step 3: Install Required Dependencies
+### Step 2: Install Required Dependencies
 ```powershell
 pip install -r requirements.txt
 ```
 
-### Step 4: Train the Neural Network Model
+### Step 3: Train the Neural Network Model
 ```powershell
 python train_model.py
 ```
-*(This loads the data, trains for 50 epochs, generates the plots, evaluates on test data, and saves all model artifacts in `models/`)*
 
-### Step 5: (Optional) Run Automated Inference Tests
+### Step 4: Run Automated Inference Tests
 ```powershell
 python test_model.py
 ```
 
-### Step 6: Launch the Streamlit Web Application
+### Step 5: Launch the Streamlit Web Application
 ```powershell
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 The browser will automatically open at `http://localhost:8501`.
 
 ---
 
-## 10. Future Improvements (College Discussion)
+## 10. Deployment Guides
 
-1. **Additional Features:** Collect atmospheric pressure (hPa), dew point, wind speed, and precipitation accumulation.
-2. **Real Observation Integration:** Connect to open meteorological research archives (e.g., NOAA GSOD or Open-Meteo historical datasets).
-3. **Temporal Modeling:** Incorporate time-series models (e.g., LSTMs or GRUs) to capture weather progression across consecutive hours.
-4. **Regularization:** Experiment with Dropout or L2 regularization if scaling to larger datasets.
+### A. Deploy to Vercel (Instant Web Preview)
+1. Go to [vercel.com/new](https://vercel.com/new) and select your repository: `anandkgupta-dev/deep_learning_internship_basic_project`.
+2. Under **Application Preset**, select **Other**.
+3. Click **Deploy**.
+4. Vercel will instantly build and serve `index.html` live on the web!
+
+### B. Deploy to Streamlit Community Cloud (Native Python App)
+1. Go to [share.streamlit.io](https://share.streamlit.io).
+2. Select your repository: `anandkgupta-dev/deep_learning_internship_basic_project`.
+3. Set **Main file path** to: `streamlit_app.py`.
+4. Click **Deploy!**.
